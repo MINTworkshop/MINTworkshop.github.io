@@ -1,0 +1,44 @@
+<header
+  class="welcome-hero"
+  {%
+  if
+  page.cover_image
+  %}
+  style="background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.6)), url('{{ page.cover_image.image }}');"
+  {%
+  endif
+  %}
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="header-text">
+          <h2>
+            ICLR {{ page.year }} Workshop on<br />
+            Representational Alignment<br />
+            (Re-Align)
+          </h2>
+
+          <div class="info-wrapper">
+            <p><i class="fas fa-calendar-alt"></i> {{ page.date }}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{ page.location }}</p>
+          </div>
+
+          {% if page.buttons %}
+          <div class="btn-wrapper d-flex justify-content-center">
+            {% for button in page.buttons %}
+            <a
+              href="{{ button.url }}"
+              class="btn btn-custom m-1"
+              target="_blank"
+            >
+              {{ button.text }}
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+{% if page.schedule %}
+<section id="schedule">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="section-heading">
+          <h3>Schedule</h3>
+          <div class="separator-div"></div>
+        </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Event</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in page.schedule %}
+            <tr
+              class="{% if item.highlight %}table-{{ item.highlight }}{% endif %}"
+            >
+              <td>{{ item.time }}</td>
+              <td>
+                {% if item.speaker %}
+                <strong>{{ item.title }}</strong><br />
+                {{ item.speaker }} {% else %} {{ item.title }} {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

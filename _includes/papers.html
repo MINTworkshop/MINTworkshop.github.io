@@ -1,0 +1,36 @@
+{% if page.papers %}
+<section id="papers">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="section-heading">
+          <h3>Accepted papers</h3>
+          <div class="separator-div"></div>
+        </div>
+
+        {% if page.paper_categories %} {% for category in page.paper_categories
+        %}
+        <h4>{{ category.name }}</h4>
+        <ul>
+          {% for paper in category.papers %}
+          <li>
+            <a href="{{ paper.url }}" target="_blank">{{ paper.title }}</a>
+            <span class="authors">{{ paper.authors }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endfor %} {% else %}
+        <ul>
+          {% for paper in page.papers %}
+          <li>
+            <a href="{{ paper.url }}" target="_blank">{{ paper.title }}</a>
+            <span class="authors">{{ paper.authors }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

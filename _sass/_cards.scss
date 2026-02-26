@@ -1,0 +1,40 @@
+.single-speaker,
+.single-organizer {
+  border: none;
+  border-radius: $border-radius;
+  text-align: center;
+  margin-bottom: $spacing-unit * 3;
+  //@include hover-transform;
+  //@include card-shadow;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-bottom: $spacing-unit * 2;
+    border: 1px solid $border-color;
+    transition: box-shadow $transition-normal;
+
+    &:hover {
+      box-shadow: rgba($primary-color, 0.75) 6px 6px;
+    }
+  }
+
+  h6 {
+    font-size: $large-font-size;
+    margin-bottom: $spacing-unit / 2;
+    transition: color $transition-normal;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    font-size: $base-font-size;
+    color: $text-light;
+    line-height: 1.3;
+  }
+}

@@ -1,0 +1,29 @@
+// Colors
+$primary-color: #bf5700;
+$secondary-color: #fbd935;
+$text-color: #43485c;
+$text-light: #636a82;
+$text-dark: #333;
+$background-light: #fafafa;
+$link-color: $primary-color;
+$link-hover: darken($primary-color, 10%);
+
+// Typography
+$base-font-family: "Helvetica Neue", sans-serif;
+$heading-font-family: $base-font-family;
+$base-font-size: 16px;
+$large-font-size: 20px;
+$heading-font-size: 32px;
+
+// Spacing
+$section-padding: 60px;
+$card-padding: 24px;
+$spacing-unit: 8px;
+
+// Borders
+$border-radius: 8px;
+$border-color: #ddd;
+
+// Transitions
+$transition-fast: 0.2s ease-out;
+$transition-normal: 0.3s ease-in-out;

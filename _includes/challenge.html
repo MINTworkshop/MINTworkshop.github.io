@@ -1,0 +1,16 @@
+{% if page.challenge %}
+<section id="challenge">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="section-heading">
+          <h3>Challenge</h3>
+          <div class="separator-div"></div>
+        </div>
+
+        {{ page.challenge | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

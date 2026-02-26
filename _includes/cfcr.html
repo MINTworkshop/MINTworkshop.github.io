@@ -1,0 +1,97 @@
+<section id="cfcr">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="section-heading">
+          <h3>Call for challenge reports</h3>
+          <div class="separator-div"></div>
+        </div>
+
+        {{ page.cfcr.intro | markdownify }}
+
+        <h5>Important dates</h5>
+        <p>
+          All deadlines are
+          <a href="https://www.timeanddate.com/time/zones/aoe"
+            >anywhere on earth (AoE) time</a
+          >.
+        </p>
+
+        <div class="row justify-content-center">
+          <div class="col-md-11">
+            <table class="table table-striped table-sm">
+              <tbody>
+                {% for date in page.cfcr.dates %}
+                {% if date.event contains "submission" %}
+                <tr class="highlight-row">
+                {% else %}
+                <tr>
+                {% endif %}
+                  <td class="font-weight-bold" style="width: 40%">{{ date.event }}</td>
+                  <td style="width: 40%">{{ date.date }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h5>Submission instructions for challenge reports</h5>
+
+        <h6 id="leaderboard-submission">Leaderboard submission</h6>
+        <p>
+          The <a
+            href="https://huggingface.co/spaces/representational-alignment/iclr2026-realign-challenge"
+            class="btn btn-secondary btn-xs"
+            target="_blank"
+            >Hugging Face leaderboard</a
+          > is live. The starter code is available via the
+          <a
+            href="https://github.com/representational-alignment/hackathon"
+            class="btn btn-secondary btn-xs"
+            target="_blank"
+            >Re-Align Hackathon</a
+          >.
+        </p>
+
+        <h6>Challenge report submission</h6>
+        <p>
+          All challenge report submissions should be made via
+          <a
+            href="{{ page.openreview }}"
+            class="btn btn-custom btn-xs"
+            target="_blank"
+            >OpenReview</a
+          >. Challenge reports should be anonymized and format content in
+          Markdown, with additional metadata as specified by our submission form
+          on OpenReview. Challenge reports should be associated with a
+          submission to the
+          <a href="#leaderboard-submission">Re-Align Challenge leaderboard</a>.
+        </p>
+
+        <h6>Review policy</h6>
+        <p>
+          Challenge reports submitted on OpenReview should be fully anonymized.
+          These submissions will go through double-blind peer review for
+          quality. The organizers will separately review leaderboard submissions
+          to ensure they are valid and consistent with the corresponding
+          challenge report.
+        </p>
+
+        <h6>Presentation format</h6>
+        <p>
+          Accepted challenge reports will be invited for presentation at the
+          ICLR {{ page.year }} Re-Align Workshop in the form of a poster. Select
+          contributions may additionally be invited as contributed talks.
+        </p>
+
+        <p>
+          Posters should be in portrait orientation with a maximum height of
+          91cm (36") and a maximum width of 61cm (24").
+        </p>
+
+        {{ page.cfcr.extra_instructions | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+@media (max-width: 1200px) {
+  .header-text h2 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-text h2 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-text h2 {
+    font-size: 36px;
+  }
+
+  .single-speaker,
+  .single-organizer {
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header-text h2 {
+    font-size: 32px;
+  }
+
+  section {
+    padding: $section-padding / 2 0;
+  }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  {% include head.html %}
+  <body id="page-top">
+    <!-- Navigation -->
+    {% include navbar.html %}
+
+    <!-- Main Content -->
+    <main role="main">{{ content }}</main>
+
+    <!-- Footer -->
+    {% include footer.html %}
+
+    <!-- Scripts -->
+    {% include scripts.html %}
+
+    <!-- Google Analytics -->
+    {% if site.google_analytics %}
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "{{ site.google_analytics }}");
+    </script>
+    {% endif %}
+  </body>
+</html>
