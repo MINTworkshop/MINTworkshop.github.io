@@ -1,5 +1,5 @@
 # Jekyll MINT_first evanwill
-# https://github.com/evanwill/MINT_first
+# https://github.com/MINTworkshop/MINTworkshop.github.io
 # based on minima theme https://github.com/jekyll/minima
 
 # Notes: 
@@ -8,18 +8,18 @@
 
 # Site settings
 # title appears in the header
-title: MINT: Multimodal Interaction in Face-to-face Dialogues
+title: Multimodal Interaction in Face-to-face Dialogues
 # description and keywords for meta tags
 description: "Create an OER workshop website quick and easy!"
 keywords: "workshops, OER, Open Education, websites, gh-pages, jekyll"
 
 # author settings for cc-by, appears in the footer
-author: evan will
-pub_year: 2018
-github_username: evanwill
+author: Esam Ghaleb
+pub_year: 2026
+github_username: esamghaleb
 
 # add the full url for the github repository
-repo: "https://github.com/evanwill/MINT_first"
+repo: "https://github.com/MINTworkshop/MINTworkshop.github.io"
 
 # site urls
 # Optional if using GitHub Pages! If building manually, these must be set correctly.
