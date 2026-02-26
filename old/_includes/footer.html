@@ -1,0 +1,50 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" style="padding-top: 20px">
+        <h5>Contact</h5>
+        <p>
+          <a href="mailto:mint.organizers@googlegroups.com">
+            mint.organizers@googlegroups.com
+          </a>
+        </p>
+      </div>
+
+      <div class="col-md-4" style="padding-top: 20px">
+        <h5>Attribution</h5>
+        <p>
+          Cover image provided by {{ page.cover_image.author }} via
+          <a href="{{ page.cover_image.licence_link }}"
+            >{{ page.cover_image.licence_name }}</a
+          >. Website design adapted from
+          <a href="https://genai4health.github.io/2024-NeurIPS/"
+            >GenAI for Health at NeurIPS 2024</a
+          >.
+        </p>
+      </div>
+
+      <div class="col-md-4" style="padding-top: 20px">
+        <h5>Editions</h5>
+        {% assign sorted_editions = site.editions | sort: "year" | reverse %} {%
+        for edition in sorted_editions %}
+        <p class="mb-1">
+          <a href="/{{ edition.year }}"
+            >Re-Align Workshop @ {{ edition.location }}</a
+          >
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row mt-4" style="padding-top: 20px">
+      <div class="col-12 text-center">
+        <p class="mb-0">
+          {% assign first_year = site.editions | map: "year" | sort | first %}
+          {% assign last_year = site.editions | map: "year" | sort | last %}
+          &copy; {{ first_year }}–{{ last_year }} Re-Align Workshop. All rights
+          reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
