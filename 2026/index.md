@@ -33,7 +33,7 @@ cfp:
     - applications and tools for embodied conversational agents, social robots,
       annotation, and behavioural analysis.
 
-    - We welcome both **archival** and **non-archival** contributions. Details on submission routes, formatting, review, and presentation are provided below.
+    We welcome both **archival** and **non-archival** contributions. Details on submission routes, formatting, review, and presentation are provided below.
 
   dates:
     - event: Paper submission deadline
