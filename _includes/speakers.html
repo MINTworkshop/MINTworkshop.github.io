@@ -1,0 +1,39 @@
+<section id="speakers">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="section-heading col-md-8 custom-lg-6">
+        <h3>Invited speakers</h3>
+        <div class="separator-div"></div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 custom-lg-6">
+        <div class="row">
+          {% for speaker in page.speakers %}
+          <div class="col-md-4 text-center">
+            <div
+              class="single-speaker"
+              data-speaker="{{ speaker.name | slugify }}"
+            >
+              {% if speaker.website %}
+              <a href="{{ speaker.website }}" target="_blank">
+                {% endif %}
+                <img
+                  src="{{ '/assets/images/speakers/' | append: speaker.image | relative_url }}"
+                  alt="{{ speaker.name }}"
+                  class="img-fluid speaker-img"
+                />
+                <h6>{{ speaker.name }}</h6>
+                {% if speaker.website %}
+              </a>
+              {% endif %}
+              <p>{{ speaker.affiliation }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

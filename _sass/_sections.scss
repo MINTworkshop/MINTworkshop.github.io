@@ -1,0 +1,70 @@
+section {
+  padding: $section-padding 0;
+
+  .section-heading {
+    @include section-heading;
+
+    .separator-div {
+      @include separator;
+    }
+  }
+}
+
+.about-section,
+.speakers-section,
+.organizers-section {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+#dates,
+#cfp,
+#cfcr {
+  .table {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    border-collapse: collapse;
+
+    td {
+      padding: 16px;
+      text-align: left;
+      vertical-align: middle;
+      border-top: none;
+      border-bottom: none;
+
+      &.font-weight-bold {
+        font-weight: 500;
+      }
+    }
+
+    tbody tr:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr.highlight-row {
+      background-color: #fff3cd;
+    }
+  }
+}
+
+.reviewer-list {
+  line-height: 2;
+  margin: $spacing-unit * 2 0;
+
+  .reviewer-item {
+    display: inline;
+    margin-right: $spacing-unit;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

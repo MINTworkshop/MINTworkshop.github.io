@@ -1,0 +1,25 @@
+<section id="news">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="section-heading">
+          <h3>News</h3>
+          <div class="separator-div"></div>
+        </div>
+
+        {% if page.news %}
+        <div class="news-items">
+          {% for item in page.news %}
+          <div class="news-item">
+            {% if item.date %}
+            <span class="news-date">{{ item.date }}</span>
+            {% endif %}
+            <div class="news-content">{{ item.content }}</div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

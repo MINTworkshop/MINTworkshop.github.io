@@ -1,0 +1,52 @@
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom Scripts -->
+<script>
+  $(document).ready(function () {
+    // Smooth scrolling for all anchor links
+    $('a[href^="#"]').on("click", function (e) {
+      e.preventDefault();
+      var hash = this.hash;
+      var target = $(hash);
+      if (target.length) {
+        history.pushState(null, null, hash);
+        $("html, body").animate(
+          {
+            scrollTop: target.offset().top - 70,
+          },
+          1000,
+        );
+      }
+    });
+
+    // Navbar background on scroll
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 50) {
+        $(".navbar").addClass("scrolled");
+      } else {
+        $(".navbar").removeClass("scrolled");
+      }
+    });
+
+    // Close mobile navbar when clicking outside of it
+    $(document).on("click", function (e) {
+      var navbar = $(".navbar-collapse");
+      if (navbar.hasClass("show") && !$(e.target).closest(".navbar").length) {
+        navbar.collapse("hide");
+      }
+    });
+
+    // Close mobile navbar when clicking a nav link
+    $(".navbar-nav .nav-link").on("click", function () {
+      var navbar = $(".navbar-collapse");
+      if (navbar.hasClass("show")) {
+        navbar.collapse("hide");
+      }
+    });
+  });
+</script>
