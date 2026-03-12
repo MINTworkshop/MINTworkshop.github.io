@@ -59,7 +59,7 @@ speakers:
   - name: Vera Demberg
     affiliation: Saarland University
     website: https://www.mpi-inf.mpg.de/departments/mlp/vera-demberg
-    image: Vera.jpg
+    image: Vera.jpeg
 
 organizers:
   - name: Raquel Fernández
