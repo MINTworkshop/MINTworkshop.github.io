@@ -29,7 +29,7 @@
 
         <h5 id="dates">Important dates for paper submissions</h5>
         <p>
-          The submission portal will be available on OpenReview. The links and deadlines will be announced on the workshop website and social media channels soon. Please consult the workshop page and submission portal for the most
+          The links and deadlines will be announced on the workshop website and social media channels soon. Please consult the workshop page and submission portal for the most
           up-to-date deadlines and any timezone details.
         </p>
 
@@ -66,11 +66,35 @@
           >.
         </p>
         {% else %}
-        <p>
-          The submission portal will be announced soon.
-        </p>
         {% endif %}
+        <h6>Submission routes</h6>
+        <p>
+          Papers should be prepared using the official
+          <a href="https://acl-org.github.io/ACLPUB/formatting.html" target="_blank">ACL formatting guidelines</a>
+          and the official
+          <a href="https://github.com/acl-org/acl-style-files" target="_blank">ACL style files</a>.
+        </p>
 
+        <p>
+          <strong>ARR route.</strong>
+          MINT will accept submissions through the current
+          <a href="https://aclrollingreview.org/dates" target="_blank">ACL Rolling Review (ARR) cycle</a>.
+          Authors using the ARR route should consult the
+          <a href="https://aclrollingreview.org/authors" target="_blank">ARR author guidelines</a>
+          and submit via
+          {% if page.openreview %}
+            <a href="{{ page.openreview }}" target="_blank">OpenReview</a>.
+          {% else %}
+            OpenReview.
+          {% endif %}
+        </p>
+
+        <p>
+          <strong>Direct submission route.</strong>
+          MINT will also accept direct submissions.
+          This route will have a separate submission deadline,
+          and the dedicated OpenReview portal will be announced soon.
+        </p>
         <h6 id="submission-format">Submission format</h6>
         <p>
           MINT welcomes two submission types:
