@@ -29,7 +29,7 @@
         for edition in sorted_editions %}
         <p class="mb-1">
           <a href="/{{ edition.year }}"
-            >Re-Align Workshop @ {{ edition.location }}</a
+            >MINT Workshop @ {{ edition.location }}</a
           >
         </p>
         {% endfor %}
@@ -41,7 +41,7 @@
         <p class="mb-0">
           {% assign first_year = site.editions | map: "year" | sort | first %}
           {% assign last_year = site.editions | map: "year" | sort | last %}
-          &copy; {{ first_year }}–{{ last_year }} Re-Align Workshop. All rights
+          &copy; {{ first_year }}–{{ last_year }} MINT Workshop. All rights
           reserved.
         </p>
       </div>
