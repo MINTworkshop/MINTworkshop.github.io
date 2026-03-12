@@ -7,7 +7,7 @@
   .nav-link {
     color: $text-light !important;
     transition: color $transition-normal;
-    margin: 0 $spacing-unit * 1.5;
+    margin: 0 ($spacing-unit * 1.5);
     position: relative;
 
     &:hover,
@@ -24,6 +24,18 @@
         background-color: $primary-color;
       }
     }
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .navbar-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
   }
 }
 
@@ -60,15 +72,4 @@
       margin-bottom: $spacing-unit * 3;
     }
   }
-}
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.navbar-icon {
-  height: 32px;
-  width: 32px;
-  object-fit: contain;
 }
