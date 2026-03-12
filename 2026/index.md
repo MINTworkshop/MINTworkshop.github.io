@@ -54,21 +54,21 @@ cfp:
 speakers:
   - name: Judith Holler
     affiliation: Radboud University & Max Planck Institute for Psycholinguistics
-    website: https://www.mpi.nl/people/judith-holler
+    website: https://www.mpi.nl/people/holler-judith
     image: Judith.jpg
   - name: Vera Demberg
     affiliation: Saarland University
-    website: https://www.uni-saarland.de/en/telematics/people/demberg.html
-    image: vera.jpg
+    website: https://www.mpi-inf.mpg.de/departments/mlp/vera-demberg
+    image: Vera.jpg
 
 organizers:
   - name: Raquel Fernández
     affiliation: University of Amsterdam
-    website: https://raquelfernandez.eu/
+    website: https://staff.fnwi.uva.nl/r.fernandezrovira/
     image: Raquel.png
   - name: Diego Frassinelli
     affiliation: LMU Munich
-    website: https://www.frassinelli.com/
+    website: https://www.ling.uni-konstanz.de/en/frassinelli/diego-frassinelli/
     image: Diego.jpg
   - name: Esam Ghaleb
     affiliation: Max Planck Institute for Psycholinguistics
@@ -76,19 +76,19 @@ organizers:
     image: Esam.png
   - name: Asli Ozyurek
     affiliation: Max Planck Institute for Psycholinguistics / Radboud University
-    website: https://www.mpi.nl/people/asli-ozyurek
+    website: https://www.mpi.nl/people/ozyurek-asli
     image: Asli.jpg
   - name: Bulat Khaertdinov
     affiliation: Maastricht University
-    website: https://bulatkhaertdinov.github.io/
+    website: https://www.maastrichtuniversity.nl/b-khaertdinov
     image: Bulat.jpg
   - name: Ece Takmaz
     affiliation: Utrecht University
-    website: https://ecetakmaz.github.io/
+    website: https://ecekt.github.io/
     image: Ece.jpg
   - name: Zerrin Yumak
     affiliation: Utrecht University
-    website: https://zerrinyumak.github.io/
+    website: https://www.uu.nl/staff/ZYumak
     image: Zerrin.jpg
 
 news:
