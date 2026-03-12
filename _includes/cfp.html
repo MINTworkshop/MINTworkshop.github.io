@@ -7,25 +7,30 @@
           <div class="separator-div"></div>
         </div>
 
-        {% if page.cfp.intro %} {{ page.cfp.intro | markdownify }} {% else %}
+        {% if page.cfp.intro %}
+          {{ page.cfp.intro | markdownify }}
+        {% else %}
         <p>
-          We invite the submission of papers for presentation at the ICLR {{
-          page.year }} workshop. We broadly welcome submissions related to
-          representational alignment among artificial and biological information
-          processing systems. Submissions can come from any area of cognitive
-          science, neuroscience, machine learning, or related fields. We welcome
-          <strong>short</strong> (up to 5 pages + references and supplement) or
-          <strong>long</strong> (up to 10 pages + references and supplement)
-          technical and position papers.
+          We invite submissions to the EMNLP {{ page.year }} workshop
+          <strong>MINT: Multimodal Interaction in Face-to-Face Dialogue</strong>.
+          The workshop brings together researchers in computational linguistics,
+          natural language processing, computer vision, HCI, robotics, and
+          cognitive science working on multimodal face-to-face communication.
+        </p>
+
+        <p>
+          We welcome work on computational models that integrate verbal and
+          non-verbal cues such as speech, text, gesture, gaze, facial
+          expression, and body pose; multimodal datasets and resources;
+          evaluation methods; and applications involving embodied
+          conversational agents, social robots, and behavioural analysis.
         </p>
         {% endif %}
 
         <h5 id="dates">Important dates for paper submissions</h5>
         <p>
-          All deadlines are
-          <a href="https://www.timeanddate.com/time/zones/aoe"
-            >anywhere on earth (AoE) time</a
-          >.
+          Please consult the workshop page and submission portal for the most
+          up-to-date deadlines and any timezone details.
         </p>
 
         <div class="row justify-content-center">
@@ -33,25 +38,26 @@
             <table class="table table-striped table-sm">
               <tbody>
                 {% for date in page.cfp.dates %}
-                {% if date.event contains "submission" %}
-                <tr class="highlight-row">
-                {% else %}
-                <tr>
-                {% endif %}
-                  <td class="font-weight-bold" style="width: 40%">{{ date.event }}</td>
-                  <td style="width: 40%">{{ date.date }}</td>
-                </tr>
+                  {% if date.event contains "submission" %}
+                  <tr class="highlight-row">
+                  {% else %}
+                  <tr>
+                  {% endif %}
+                    <td class="font-weight-bold" style="width: 40%">{{ date.event }}</td>
+                    <td style="width: 40%">{{ date.date }}</td>
+                  </tr>
                 {% endfor %}
               </tbody>
             </table>
           </div>
         </div>
 
-        <h5>Submission instructions for papers</h5>
+        <h5>Submission instructions</h5>
 
         <h6>Submission portal</h6>
+        {% if page.openreview %}
         <p>
-          All paper submissions should be made via
+          All submissions should be made via
           <a
             href="{{ page.openreview }}"
             class="btn btn-custom btn-xs"
@@ -59,157 +65,65 @@
             >OpenReview</a
           >.
         </p>
+        {% else %}
+        <p>
+          The submission portal will be announced soon.
+        </p>
+        {% endif %}
 
         <h6 id="submission-format">Submission format</h6>
         <p>
-          Authors must select between the
-          <strong>short</strong> (up to 5 pages + references and supplement) or
-          <strong>long</strong> (up to 10 pages + references and supplement)
-          paper submission tracks. The supplement can include an author
-          contributions statement, a disclosure on the use of automated tools
-          (such as generative AI), and/or a technical appendix. Submissions will
-          be evaluated within the track to which they are submitted.
+          MINT welcomes two submission types:
         </p>
+        <ul>
+          <li>
+            <strong>Archival papers</strong>: original, unpublished research to
+            appear in the workshop proceedings.
+          </li>
+          <li>
+            <strong>Non-archival papers</strong>: previously published work,
+            demos, or preliminary work to be presented at the workshop.
+          </li>
+        </ul>
 
         <p>
-          Paper submissions should consist of a single PDF that follows the
-          official ICLR LaTeX template but with an edited header that identifies
-          the submission as to the workshop rather than as to the main
-          conference; for convenience, we have adapted the official ICLR
-          conference template into a
-          <a
-            href="https://github.com/representational-alignment/iclr-workshop-template/raw/refs/heads/master/re-align{{ page.year }}.zip"
-            class="btn btn-secondary btn-xs"
-            target="_blank"
-            >Re-Align template </a
-          >.
+          Archival submissions may be made as
+          <strong>long papers</strong> (up to 8 pages) or
+          <strong>short papers</strong> (up to 4 pages), plus references.
+          Please submit a single PDF in the official ACL style.
         </p>
 
-        <h6 id="anonymization">Anonymization</h6>
+        <h6 id="anonymization">Anonymization and review</h6>
         <p>
-          All paper submissions should be fully anonymized. Please remove any
-          identifying information such as author names, affiliations,
-          personalized GitHub links, etc. Links to anonymized content are
-          acceptable, though we do not require reviewers to examine such
-          content.
+          Archival submissions should be anonymized for double-blind review.
+          Please remove author names, affiliations, and other identifying
+          information from the manuscript and supplementary material where
+          appropriate.
         </p>
 
-        <h6 id="ai-disclosure">
-          Disclosure of the use of artificial intelligence
-        </h6>
+        <h6>Scope</h6>
         <p>
-          In accordance with the
-          <a
-            href="https://blog.iclr.cc/2025/08/26/policies-on-large-language-model-usage-at-iclr-2026/"
-            >policies on large language model usage at ICLR 2026</a
-          >, any use of (generative) artificial intelligence to prepare the
-          content of a paper submission must be disclosed. (This disclosure can
-          be placed in the supplement.)
+          We welcome submissions on multimodal face-to-face interaction,
+          including but not limited to multimodal dialogue modelling,
+          gesture-speech integration, gaze and turn-taking, multimodal grounding,
+          behavioural annotation, embodied conversational agents, social
+          robotics, and evaluation methods for multimodal communication systems.
         </p>
 
-        <h6>Interdisciplinarity</h6>
+        <h6>Selection criteria</h6>
         <p>
-          During submission, authors will be asked to specify if their
-          submission aligns more with cognitive science, neuroscience, or
-          machine learning; we will try to assign reviewers accordingly. Since
-          this workshop is interdisciplinary with the goal to bring together and
-          enable knowledge transfer between researchers from various
-          communities, we suggest (but do not require) submissions to use the
-          terminology and general formalism described in the
-          <a href="https://arxiv.org/abs/2310.13018">position paper</a>
-          that the organizers of this workshop co-authored in collaboration with
-          others. (Commentaries and critiques of this framework are also
-          welcome!)
+          Submissions will be evaluated for relevance to the workshop,
+          technical quality, clarity, novelty, and potential to stimulate
+          interdisciplinary discussion across NLP, computer vision, HCI,
+          robotics, and cognitive science.
         </p>
 
-        <h5>Policies on submission and review of papers</h5>
-
-        <h6>Prohibition on prior publication</h6>
+        <h6>Presentation format</h6>
         <p>
-          We welcome only papers that have not yet been accepted for publication
-          at other venues. Submission of late-breaking results and unpublished
-          or ongoing work and abstracts thereof, including works currently under
-          review but not yet accepted at other venues, are welcome. For example,
-          papers that are concurrently submitted to ICML {{ page.year }}, CogSci
-          {{ page.year }}, and CCN {{ page.year }} are welcome. We also welcome
-          accepted COSYNE {{ page.year }} abstracts, which should be extended to
-          our short or long paper format. Papers that have already appeared at a
-          venue for presentation (including any workshop, conference, or
-          journal) must be significantly updated or extended to be eligible for
-          submission to the workshop.
-        </p>
-
-        <h6>Policy on the use of artificial intelligence</h6>
-        <p>
-          Because the Re-Align Workshop is a participatory initiative,
-          AI-generated papers are not allowed. AI assistance is permitted, but
-          submissions must be primarily human-authored. Authors must also follow
-          the
-          <a
-            href="https://blog.iclr.cc/2025/08/26/policies-on-large-language-model-usage-at-iclr-2026/"
-            >policies on large language model usage at ICLR 2026</a
-          >, including disclosing the nature of the use of AI and holding
-          responsibility for all content of submitted work.
-        </p>
-
-        <h6>Reciprocal reviewer policy</h6>
-        <p>
-          At least one author from each submission must volunteer to serve as a
-          reviewer for the Re-Align Workshop between the
-          <a href="#dates">submission and reviewing deadlines</a>. It is
-          sufficient to identify an author who has already accepted an
-          invitation to be a reviewer for the workshop.
-        </p>
-
-        <h6>Selection criteria for papers</h6>
-        <p>
-          All paper submissions will be checked for adherence to the workshop
-          submission policies; submissions not meeting
-          <a href="#submission-format">formatting</a>,
-          <a href="#anonymization">anonymity</a>, and
-          <a href="#ai-disclosure">AI disclosure</a> requirements, as well as
-          those deemed off-topic or not meeting minimum academic standards, will
-          be desk-rejected. Valid paper submissions will then
-          undergo double-blind peer review by the workshop's
-          <a href="#program-committee">program committee</a>, and editorial
-          decisions will be made by the
-          <a href="#organizers">organizing committee</a>. Accepted papers will
-          be chosen based on theoretical or empirical validation, novelty, and
-          suitability to the workshop's goals.
-        </p>
-
-        <h6>Non-archival policy for papers</h6>
-        <p>
-          The workshop is non-archival, <i>i.e.</i>, we expect that papers
-          appearing at the workshop will be subsequently published at a journal
-          or other venue with archival proceedings.
-        </p>
-
-        <h6>Presentation format for papers</h6>
-        <p>
-          All accepted papers will be invited for presentation at the ICLR {{
-          page.year }} Re-Align Workshop in the form of a poster. A few select
-          contributions will additionally be invited as contributed talks.
-          Accepted papers will be posted in a non-archival format on the
-          workshop website.
-        </p>
-
-        <p>
-          Posters should be in portrait orientation with a maximum height of
-          91cm (36") and a maximum width of 61cm (24").
-        </p>
-
-        <h6>Remote presentation for papers</h6>
-        <p>
-          Acceptance decisions on paper submissions will be considered
-          independently from any constraints on the ability of authors to attend
-          ICLR in person. Our goal is to allow every accepted paper to be
-          presented in person. If our assigned space at the conference does not
-          have the capacity for all papers to be presented as posters, we will
-          feature any papers we cannot accommodate via presentation in an
-          asynchronous virtual format to be determined. This option will also be
-          available to presenters who are unable to travel due to visa or
-          funding restrictions.
+          Accepted contributions will be invited for presentation at the MINT
+          workshop co-located with EMNLP {{ page.year }} in Budapest, Hungary.
+          Presentation formats may include posters and selected contributed
+          talks, depending on the final program.
         </p>
 
         {{ page.cfp.extra_instructions | markdownify }}
