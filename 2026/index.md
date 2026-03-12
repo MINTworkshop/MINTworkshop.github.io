@@ -33,15 +33,7 @@ cfp:
     - applications and tools for embodied conversational agents, social robots,
       annotation, and behavioural analysis.
 
-    **Submission types:**
-    - **Long papers** (up to 8 pages + references): original research
-    - **Short papers** (up to 4 pages + references): work in progress, negative results, datasets, or demos
-
-    **Paper status:**
-    - **Archival**: original, unpublished research for proceedings
-    - **Non-archival**: previously published work or preliminary research
-
-    More details on the submission process and guidelines are provided below.
+    - We welcome both **archival** and **non-archival** contributions. Details on submission routes, formatting, review, and presentation are provided below.
 
   dates:
     - event: Paper submission deadline

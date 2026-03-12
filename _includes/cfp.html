@@ -11,26 +11,22 @@
           {{ page.cfp.intro | markdownify }}
         {% else %}
         <p>
-          We invite submissions to the EMNLP {{ page.year }} workshop
-          <strong>MINT: Multimodal Interaction in Face-to-Face Dialogue</strong>.
-          The workshop brings together researchers in computational linguistics,
-          natural language processing, computer vision, HCI, robotics, and
-          cognitive science working on multimodal face-to-face communication.
+          We invite submissions to <strong>MINT: Multimodal Interaction in Face-to-Face Dialogue</strong>,
+          a workshop on modelling, generating, and understanding multimodal verbal and non-verbal
+          behaviour in face-to-face interaction.
         </p>
-
         <p>
-          We welcome work on computational models that integrate verbal and
-          non-verbal cues such as speech, text, gesture, gaze, facial
-          expression, and body pose; multimodal datasets and resources;
-          evaluation methods; and applications involving embodied
-          conversational agents, social robots, and behavioural analysis.
+          MINT brings together researchers in computational linguistics, NLP, computer vision,
+          HCI, robotics, and cognitive science working on multimodal communication, including
+          language, gesture, gaze, facial expression, prosody, body pose, embodied agents,
+          multimodal datasets, and evaluation.
         </p>
         {% endif %}
 
-        <h5 id="dates">Important dates for paper submissions</h5>
+        <h5 id="dates">Important dates</h5>
         <p>
-          The links and deadlines will be announced on the workshop website and social media channels soon. Please consult the workshop page and submission portal for the most
-          up-to-date deadlines and any timezone details.
+          Please consult the workshop website and submission portals for the most up-to-date
+          deadlines and timezone details.
         </p>
 
         <div class="row justify-content-center">
@@ -52,21 +48,32 @@
           </div>
         </div>
 
-        <h5>Submission instructions</h5>
+        <h5>Submission information</h5>
 
-        <h6>Submission routes and portal</h6>
+        <h6>Submission routes and portals</h6>
+        <ul>
+          <li>
+            <strong>ARR commitment route.</strong>
+            Authors may submit through the current
+            <a href="https://aclrollingreview.org/dates" target="_blank">ACL Rolling Review (ARR) cycle</a>
+            and commit their paper to MINT. Please consult the
+            <a href="https://aclrollingreview.org/authors" target="_blank">ARR author guidelines</a>
+            for current procedures and requirements.
+          </li>
+          <li>
+            <strong>Direct submission route.</strong>
+            MINT will also accept direct submissions. This route will have a separate deadline,
+            and its dedicated OpenReview portal will be announced soon.
+          </li>
+        </ul>
+
         {% if page.openreview %}
         <p>
-          All submissions should be made via
-          <a
-            href="{{ page.openreview }}"
-            class="btn btn-custom btn-xs"
-            target="_blank"
-            >OpenReview</a
-          >.
+          The ARR commitment portal is available on
+          <a href="{{ page.openreview }}" class="btn btn-custom btn-xs" target="_blank">OpenReview</a>.
         </p>
-        {% else %}
         {% endif %}
+
         <p>
           Papers should be prepared using the official
           <a href="https://acl-org.github.io/ACLPUB/formatting.html" target="_blank">ACL formatting guidelines</a>
@@ -74,79 +81,41 @@
           <a href="https://github.com/acl-org/acl-style-files" target="_blank">ACL style files</a>.
         </p>
 
-        <p>
-          <strong>ARR route.</strong>
-          MINT will accept submissions through the current
-          <a href="https://aclrollingreview.org/dates" target="_blank">ACL Rolling Review (ARR) cycle</a>.
-          Authors using the ARR route should consult the
-          <a href="https://aclrollingreview.org/authors" target="_blank">ARR author guidelines</a>
-          and submit via
-          {% if page.openreview %}
-            <a href="{{ page.openreview }}" target="_blank">OpenReview</a>.
-          {% else %}
-            OpenReview.
-          {% endif %}
-        </p>
-
-        <p>
-          <strong>Direct submission route.</strong>
-          MINT will also accept direct submissions.
-          This route will have a separate submission deadline,
-          and the dedicated OpenReview portal will be announced soon.
-        </p>
-        <h6 id="submission-format">Submission format</h6>
-        <p>
-          MINT welcomes two submission types:
-        </p>
+        <h6 id="submission-format">Paper categories and length</h6>
         <ul>
           <li>
-            <strong>Archival papers</strong>: original, unpublished research to
-            appear in the workshop proceedings.
+            <strong>Archival papers.</strong>
+            Original, unpublished research to appear in the workshop proceedings.
+            These may be submitted as <strong>long papers</strong> (up to 8 pages plus references)
+            or <strong>short papers</strong> (up to 4 pages plus references).
           </li>
           <li>
-            <strong>Non-archival papers</strong>: previously published work,
-            demos, or preliminary work to be presented at the workshop.
+            <strong>Non-archival papers.</strong>
+            Previously published work, preliminary research, or demos to be presented
+            at the workshop.
           </li>
         </ul>
 
-        <p>
-          Archival submissions may be made as
-          <strong>long papers</strong> (up to 8 pages) or
-          <strong>short papers</strong> (up to 4 pages), plus references.
-          Please submit a single PDF in the official ACL style.
-        </p>
-
-        <h6 id="anonymization">Anonymization and review</h6>
+        <h6 id="anonymization">Anonymization</h6>
         <p>
           Archival submissions should be anonymized for double-blind review.
-          Please remove author names, affiliations, and other identifying
-          information from the manuscript and supplementary material where
-          appropriate.
+          Please remove author names, affiliations, acknowledgements, and other identifying
+          information from the manuscript and supplementary material where appropriate.
         </p>
 
-        <h6>Scope</h6>
+        <h6>Review criteria</h6>
         <p>
-          We welcome submissions on multimodal face-to-face interaction,
-          including but not limited to multimodal dialogue modelling,
-          gesture-speech integration, gaze and turn-taking, multimodal grounding,
-          behavioural annotation, embodied conversational agents, social
-          robotics, and evaluation methods for multimodal communication systems.
+          Each paper will receive three reviews. Archival submissions will be evaluated primarily
+          for originality, technical soundness, completeness, and relevance to the workshop.
+          Non-archival and work-in-progress submissions will be evaluated primarily for relevance
+          to the workshop theme and their potential to stimulate discussion.
         </p>
 
-        <h6>Selection criteria</h6>
+        <h6>Presentation</h6>
         <p>
-          Submissions will be evaluated for relevance to the workshop,
-          technical quality, clarity, novelty, and potential to stimulate
-          interdisciplinary discussion across NLP, computer vision, HCI,
-          robotics, and cognitive science.
-        </p>
-
-        <h6>Presentation format</h6>
-        <p>
-          Accepted contributions will be invited for presentation at the MINT
-          workshop co-located with EMNLP {{ page.year }} in Budapest, Hungary.
-          Presentation formats may include posters and selected contributed
-          talks, depending on the final program.
+          Accepted contributions will be invited for presentation at the MINT workshop
+          co-located with EMNLP {{ page.year }} in Budapest, Hungary. Presentation formats
+          may include posters and selected talks, depending on the final program.
         </p>
 
         {{ page.cfp.extra_instructions | markdownify }}
