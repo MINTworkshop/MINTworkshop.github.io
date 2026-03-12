@@ -119,6 +119,11 @@ about: |
   datasets, multimodal learning methods, embodied agents, social robots, and
   evaluation frameworks for naturalistic interaction.
 
+sponsors:
+  - name: We thank the Multimodal Language Department (MLD), Max Planck Institute for Psycholinguistics, for sponsoring this workshop.
+    url: https://www.mpi.nl/department/multimodal-language-department/23
+    image: MLD.jpg
+
 program_committee:
   - name: Justine Cassell
     affiliation: INRIA & École Polytechnique
