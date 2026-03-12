@@ -118,9 +118,9 @@ about: |
   with humans or simulate human-like behaviour**. This includes research on new
   datasets, multimodal learning methods, embodied agents, social robots, and
   evaluation frameworks for naturalistic interaction.
-
+  
 sponsors:
-  - name: We thank the Multimodal Language Department (MLD), Max Planck Institute for Psycholinguistics, for sponsoring this workshop.
+  - name: Multimodal Language Department (MLD), Max Planck Institute for Informatics
     url: https://www.mpi.nl/department/multimodal-language-department/23
     image: MLD.jpg
 
