@@ -33,13 +33,15 @@ cfp:
     - applications and tools for embodied conversational agents, social robots,
       annotation, and behavioural analysis.
 
-    MINT welcomes two submission types:
+    **Submission types:**
+    - **Long papers** (up to 8 pages + references): original research
+    - **Short papers** (up to 4 pages + references): work in progress, negative results, datasets, or demos
 
-    1. **Archival papers**: original, unpublished research to appear in the workshop proceedings.
-    2. **Non-archival papers**: previously published work, demos, or preliminary work to be presented at the workshop.
+    **Paper status:**
+    - **Archival**: original, unpublished research for proceedings
+    - **Non-archival**: previously published work or preliminary research
 
-    Archival submissions may be **long papers (up to 8 pages)** or **short papers (up to 4 pages)**,
-    plus references.
+    More details on the submission process and guidelines are provided below.
 
   dates:
     - event: Paper submission deadline
