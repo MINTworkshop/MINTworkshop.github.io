@@ -1,8 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-header">
   <div class="container">
-    <a class="navbar-brand" href="{{ '/' | relative_url }}"
-      >MINT Workshop</a
-    >
+    <a class="navbar-brand" href="{{ '/' | relative_url }}">
+      <img
+        src="{{ '/assets/images/mint_icon.png' | relative_url }}"
+        alt="MINT Workshop"
+        class="navbar-icon"
+      />
+      <span>MINT Workshop</span>
+    </a>
 
     <button
       class="navbar-toggler"
@@ -25,13 +30,13 @@
         <li class="nav-item">
           <a class="scroll-link nav-link" href="#cfp">Call for papers</a>
         </li>
-        {% endif %} {% if page.show_cfcr %}
+        {% endif %}
+        {% if page.show_cfcr %}
         <li class="nav-item">
-          <a class="scroll-link nav-link" href="#cfcr"
-            >Call for challenge reports</a
-          >
+          <a class="scroll-link nav-link" href="#cfcr">Call for challenge reports</a>
         </li>
-        {% endif %} {% if page.hackathon %}
+        {% endif %}
+        {% if page.hackathon %}
         <li class="nav-item">
           <a class="scroll-link nav-link" href="#hackathon">Hackathon</a>
         </li>
@@ -51,17 +56,15 @@
         <li class="nav-item">
           <a class="scroll-link nav-link" href="#program-committee">PC</a>
         </li>
-        {% endif %} {% if page.sponsors %}
+        {% endif %}
+        {% if page.sponsors %}
         <li class="nav-item">
           <a class="scroll-link nav-link" href="#sponsors">Sponsor</a>
         </li>
-        {% endif %} {% if page.paper_url %}
+        {% endif %}
+        {% if page.paper_url %}
         <li class="nav-item">
-          <a
-            class="nav-link highlight-button"
-            href="{{ page.paper_url }}"
-            target="_blank"
-          >
+          <a class="nav-link highlight-button" href="{{ page.paper_url }}" target="_blank">
             📄 MINT Paper
           </a>
         </li>
