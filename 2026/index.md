@@ -67,15 +67,15 @@ organizers:
   - name: Esam Ghaleb
     affiliation: Max Planck Institute for Psycholinguistics
     website: https://esamghaleb.github.io/
-    image: Esam.png
-  - name: Asli Ozyurek
-    affiliation: Max Planck Institute for Psycholinguistics / Radboud University
-    website: https://www.mpi.nl/people/ozyurek-asli
-    image: Asli.jpg
+    image: Esam.png 
   - name: Bulat Khaertdinov
     affiliation: Maastricht University
     website: https://www.maastrichtuniversity.nl/b-khaertdinov
     image: Bulat.jpg
+- name: Asli Ozyurek
+    affiliation: Max Planck Institute for Psycholinguistics / Radboud University
+    website: https://www.mpi.nl/people/ozyurek-asli
+    image: Asli.jpg
   - name: Ece Takmaz
     affiliation: Utrecht University
     website: https://ecekt.github.io/
