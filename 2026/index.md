@@ -51,7 +51,7 @@ speakers:
     website: https://www.mpi.nl/people/holler-judith
     image: Judith.jpg
   - name: Vera Demberg
-    affiliation: Saarland University
+    affiliation: Saarland University & Max Planck Institute for Informatics,
     website: https://www.mpi-inf.mpg.de/departments/mlp/vera-demberg
     image: Vera.jpeg
 
@@ -72,7 +72,7 @@ organizers:
     affiliation: Maastricht University
     website: https://www.maastrichtuniversity.nl/b-khaertdinov
     image: Bulat.jpg
-- name: Asli Ozyurek
+  - name: Asli Ozyurek
     affiliation: Max Planck Institute for Psycholinguistics / Radboud University
     website: https://www.mpi.nl/people/ozyurek-asli
     image: Asli.jpg
