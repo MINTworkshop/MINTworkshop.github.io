@@ -35,15 +35,26 @@ cfp:
 
     We welcome both **archival** and **non-archival** contributions. Details on submission routes, formatting, review, and presentation are provided below.
 
-  dates:
-    - event: Paper submission deadline
-      date: Monday, June 1st, 2026
-    - event: Reviewing deadline
-      date: TBD
-    - event: Author notification
-      date: TBD
-    - event: Camera-ready deadline
-      date: Saturday, August 1st, 2026
+dates:
+  - event: First call for workshop papers
+    date: March 15th, 2026
+  - event: Second call for workshop papers
+    date: April 15th, 2026
+  - event: Third call for workshop papers
+    date: May 15th, 2026
+  - event: Direct paper submission deadline
+    date: June 1st, 2026
+  - event: Pre-reviewed ARR commitment deadline
+    date: June 25th, 2026
+  - event: Notification of acceptance
+    date: July 3rd, 2026
+  - event: Camera-ready paper due
+    date: August 1st, 2026
+  - event: Proceedings due (hard deadline)
+    date: September 30th, 2026
+  - event: Pre-recorded video due (hard deadline)
+    date: October 8th, 2026
+
 
 speakers:
   - name: Judith Holler
@@ -114,9 +125,9 @@ about: |
   evaluation frameworks for naturalistic interaction.
   
 sponsors:
-  - name: Multimodal Language Department (MLD), Max Planck Institute for Informatics
-    url: https://www.mpi.nl/department/multimodal-language-department/23
-    image: MLD.jpg
+  - name: Max Planck Institute for Psycholinguistics
+    url: https://www.mpi.nl
+    image: MPI.png
 
 program_committee:
   - name: Justine Cassell
