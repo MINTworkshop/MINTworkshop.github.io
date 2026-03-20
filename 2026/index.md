@@ -88,14 +88,6 @@ organizers:
     website: https://www.uu.nl/staff/ZYumak
     image: Zerrin.jpg
 
-news:
-  - content: MINT has been accepted as a workshop at EMNLP 2026.
-    date: 2026-02-20
-    url: https://2026.emnlp.org/
-  - content: Call for papers is now out!
-    date: 2026-03-20
-    url: https://mintworkshop.github.io/cfp/
-
 about: |
   **MINT: Multimodal Interaction in Face-to-Face Dialogue** is a new workshop on
   modelling, generating, and understanding multimodal verbal and non-verbal
@@ -118,6 +110,15 @@ about: |
   with humans or simulate human-like behaviour**. This includes research on new
   datasets, multimodal learning methods, embodied agents, social robots, and
   evaluation frameworks for naturalistic interaction.
+
+news:
+  - content: Call for papers is now out!
+    date: 2026-03-20
+    url: https://mintworkshop.github.io/cfp/
+  - content: MINT has been accepted as a workshop at EMNLP 2026.
+    date: 2026-02-20
+    url: https://2026.emnlp.org/
+
   
 sponsors:
   - name: Max Planck Institute for Psycholinguistics
