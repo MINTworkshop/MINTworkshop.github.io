@@ -6,7 +6,7 @@ location: EMNLP 2026 in Budapest, Hungary
 show_cfp: true
 
 cover_image:
-  image: "/assets/images/locations/2.png"
+  image: "/assets/images/locations/MINT.png"
   author: Jakub Hałun
   licence_name: "CC BY-SA 4.0"
   licence_link: "https://creativecommons.org/licenses/by-sa/4.0/"
