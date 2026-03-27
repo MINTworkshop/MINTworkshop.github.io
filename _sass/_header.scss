@@ -28,7 +28,7 @@
 }
 
 .welcome-hero {
-  min-height: 50vh;
+  min-height: 60vh;
   @include flex-center;
   position: relative;
   background-size: cover;
@@ -38,13 +38,13 @@
   .header-text {
     text-align: center;
     padding: $spacing-unit * 4;
-    color: white;
+    color: green;
 
     h2 {
       font-size: 54px;
       font-weight: 700;
       margin-bottom: $spacing-unit * 3;
-      color: white;
+      color: green;
 
       @media screen and (max-width: 768px) {
         font-size: 36px;
