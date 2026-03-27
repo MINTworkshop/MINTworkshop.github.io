@@ -1,22 +1,21 @@
 <header
   class="welcome-hero"
-  {%
-  if
-  page.cover_image
-  %}
-  style="background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.6)), url('{{ page.cover_image.image }}');"
-  {%
-  endif
-  %}
+  {% if page.cover_image %}
+  style="--hero-image: url('{{ page.cover_image.image }}');"
+  {% endif %}
 >
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-11 col-xl-10 text-center">
         <div class="header-text">
           <h2>
             EMNLP {{ page.year }} Workshop on<br />
-            Multimodal Interaction in Face-to-Face Dialogue (MINT)<br />
+            Multimodal Interaction in Face-to-Face Dialogue (MINT)
           </h2>
+
+          {% if page.subtitle %}
+          <p class="subtitle">{{ page.subtitle }}</p>
+          {% endif %}
 
           <div class="info-wrapper">
             <p><i class="fas fa-calendar-alt"></i> {{ page.date }}</p>
@@ -28,8 +27,9 @@
             {% for button in page.buttons %}
             <a
               href="{{ button.url }}"
-              class="btn btn-custom m-1"
+              class="btn btn-custom"
               target="_blank"
+              rel="noopener noreferrer"
             >
               {{ button.text }}
             </a>

@@ -1,43 +1,42 @@
-<header
-  class="welcome-hero"
-  {% if page.cover_image %}
-  style="--hero-image: url('{{ page.cover_image.image }}');"
-  {% endif %}
->
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-11 col-xl-10 text-center">
-        <div class="header-text">
-          <h2>
-            EMNLP {{ page.year }} Workshop on<br />
-            Multimodal Interaction in Face-to-Face Dialogue (MINT)
-          </h2>
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-          {% if page.subtitle %}
-          <p class="subtitle">{{ page.subtitle }}</p>
-          {% endif %}
+  <title>
+    {% if page.title %}{{ page.title }} - {% endif %}MINT Workshop
+  </title>
 
-          <div class="info-wrapper">
-            <p><i class="fas fa-calendar-alt"></i> {{ page.date }}</p>
-            <p><i class="fas fa-map-marker-alt"></i> {{ page.location }}</p>
-          </div>
+  <!-- Tab icon / favicon -->
+  <link rel="icon" type="image/png" href="{{ '/assets/images/mint_icon.png' | relative_url }}" />
+  <link rel="shortcut icon" href="{{ '/assets/images/mint_icon.png' | relative_url }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/mint_icon.png' | relative_url }}">
 
-          {% if page.buttons %}
-          <div class="btn-wrapper d-flex justify-content-center">
-            {% for button in page.buttons %}
-            <a
-              href="{{ button.url }}"
-              class="btn btn-custom"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ button.text }}
-            </a>
-            {% endfor %}
-          </div>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+  <!-- Optional for Apple devices -->
+  <link rel="apple-touch-icon" href="{{ '/assets/images/mint_icon.png' | relative_url }}" />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
+</head>
