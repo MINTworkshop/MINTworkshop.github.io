@@ -39,7 +39,7 @@ cfp:
     - event: ARR paper submission deadline
       date: May 25th, 2026
     - event: Direct paper submission deadline
-      date: July 8th, 2026
+      date: <del>July 8th, 2026</del> <strong>July 22nd, 2026</strong>
     - event: Pre-reviewed ARR commitment deadline
       date: August 24th, 2026
     - event: Notification of acceptance
