@@ -112,6 +112,9 @@ about: |
   evaluation frameworks for naturalistic interaction.
 
 news:
+  - content: Direct paper submission deadline has been extended to July 22nd, 2026. The commitment deadline for pre-reviewed ARR papers is August 24th, 2026.
+    date: 2026-07-02
+    
   - content: Call for papers is now out!
     date: 2026-03-20
     url: https://mintworkshop.github.io/cfp/
