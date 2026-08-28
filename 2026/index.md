@@ -1,7 +1,7 @@
 ---
 layout: workshop
 year: 2026
-date: Workshop date TBA (co-located with EMNLP 2026, October 24th-29th, 2026)
+date: Workshop date 29th October 2026 (co-located with EMNLP 2026, October 24th-29th, 2026)
 location: EMNLP 2026 in Budapest, Hungary
 show_cfp: true
 
