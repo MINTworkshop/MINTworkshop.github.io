@@ -8,28 +8,136 @@
           <div class="separator-div"></div>
         </div>
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Event</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in page.schedule %}
-            <tr
-              class="{% if item.highlight %}table-{{ item.highlight }}{% endif %}"
-            >
-              <td>{{ item.time }}</td>
-              <td>
-                {% if item.speaker %}
-                <strong>{{ item.title }}</strong><br />
-                {{ item.speaker }} {% else %} {{ item.title }} {% endif %}
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        {% if page.schedule_note %}
+        <div class="program-intro">{{ page.schedule_note | markdownify }}</div>
+        {% endif %}
+
+        <div class="program-wrap">
+          <table class="table program-table">
+            <thead>
+              <tr>
+                <th scope="col" class="program-time">Time</th>
+                <th scope="col">Event</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in page.schedule %}
+              {% comment %} Keynotes take their title and abstract from `speakers`. {% endcomment %}
+              {% assign spk = nil %}
+              {% if item.speaker %}{% assign spk = page.speakers | where: "name", item.speaker | first %}{% endif %}
+              {% assign item_title = item.title | default: spk.talk.title %}
+              {% assign item_abstract = item.abstract | default: spk.talk.abstract %}
+              <tr class="program-row program-{{ item.type | default: 'item' }}{% if item.highlight %} table-{{ item.highlight }}{% endif %}">
+                <td class="program-time">
+                  {% if item.start %}{{ item.start }}{% if item.end %}&ndash;{{ item.end }}{% endif %}{% else %}{{ item.time }}{% endif %}
+                </td>
+                <td class="program-event">
+                  {% if item.type == "keynote" %}<div class="program-kicker">Keynote</div>{% endif %}
+                  <div class="program-title">
+                    {% if item.icon %}<i class="fas fa-{{ item.icon }} program-icon" aria-hidden="true"></i>{% endif %}
+                    {% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item_title }}</a>{% else %}{{ item_title | default: "Title to be announced" }}{% endif %}
+                    {% if item.remote %}<span class="program-badge" title="Presented online"><i class="fas fa-video" aria-hidden="true"></i> Remote</span>{% endif %}
+                  </div>
+
+                  {% if spk %}
+                  <div class="program-people">
+                    {% if spk.website %}<a href="{{ spk.website }}" target="_blank" rel="noopener">{{ spk.name }}</a>{% else %}{{ spk.name }}{% endif %}
+                    {% if spk.affiliation %}<span class="program-sep" aria-hidden="true">&middot;</span> <span class="program-affiliation">{{ spk.affiliation }}</span>{% endif %}
+                  </div>
+                  {% elsif item.speaker %}
+                  <div class="program-people">{{ item.speaker }}</div>
+                  {% endif %}
+
+                  {% if item.format or item.chair %}
+                  <div class="program-meta">
+                    {% if item.format %}<span>{{ item.format }}</span>{% endif %}
+                    {% if item.format and item.chair %}<span class="program-sep" aria-hidden="true">&middot;</span>{% endif %}
+                    {% if item.chair %}<span>Chair: {{ item.chair }}</span>{% endif %}
+                  </div>
+                  {% endif %}
+
+                  {% if item.note %}<div class="program-note">{{ item.note | markdownify }}</div>{% endif %}
+
+                  {% if item_abstract %}
+                  <details class="program-abstract">
+                    <summary>Abstract</summary>
+                    <div class="program-abstract-body">{{ item_abstract | markdownify }}</div>
+                  </details>
+                  {% endif %}
+
+                  {% if item.talks %}
+                  {% comment %}
+                    Talk start times are computed from the session start plus
+                    `talk_minutes` (default 15) per talk; a talk's own `time`
+                    or `minutes` overrides this. Untitled talks keep their slot
+                    but are not shown.
+                  {% endcomment %}
+                  {% assign shown = 0 %}
+                  {% for talk in item.talks %}{% if talk.title and talk.title != "" %}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}
+                  {% if shown > 0 %}
+                  {% assign hm = item.start | split: ":" %}
+                  {% assign clock = hm[0] | times: 60 | plus: hm[1] %}
+                  {% assign slot_minutes = item.talk_minutes | default: 15 %}
+                  <ol class="program-talks">
+                    {% for talk in item.talks %}
+                    {% if talk.time %}
+                      {% assign hm = talk.time | split: ":" %}
+                      {% assign clock = hm[0] | times: 60 | plus: hm[1] %}
+                    {% endif %}
+                    {% assign hh = clock | divided_by: 60 | floor | prepend: "0" | slice: -2, 2 %}
+                    {% assign mm = clock | modulo: 60 | prepend: "0" | slice: -2, 2 %}
+                    {% if talk.title and talk.title != "" %}
+                    <li class="program-talk">
+                      <span class="program-talk-time">{{ hh }}:{{ mm }}</span>
+                      <div class="program-talk-body">
+                        <div class="program-talk-title">
+                          {% if talk.url %}<a href="{{ talk.url }}" target="_blank" rel="noopener">{{ talk.title }}</a>{% else %}{{ talk.title }}{% endif %}
+                          {% if talk.remote %}<span class="program-badge" title="Presented online"><i class="fas fa-video" aria-hidden="true"></i> Remote</span>{% endif %}
+                        </div>
+                        {% if talk.authors %}<div class="program-authors">{{ talk.authors | join: ", " }}</div>{% endif %}
+                        {% if talk.abstract %}
+                        <details class="program-abstract">
+                          <summary>Abstract</summary>
+                          <div class="program-abstract-body">{{ talk.abstract | markdownify }}</div>
+                        </details>
+                        {% endif %}
+                      </div>
+                    </li>
+                    {% endif %}
+                    {% assign this_minutes = talk.minutes | default: slot_minutes %}
+                    {% assign clock = clock | plus: this_minutes %}
+                    {% endfor %}
+                  </ol>
+                  {% else %}
+                  <div class="program-tba">Talks to be announced</div>
+                  {% endif %}
+                  {% endif %}
+
+                  {% if item.posters %}
+                  {% assign shown = 0 %}
+                  {% for poster in item.posters %}{% if poster.title and poster.title != "" %}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}
+                  {% if shown > 0 %}
+                  <details class="program-posters">
+                    <summary>{{ shown }} posters</summary>
+                    <ul class="program-poster-list">
+                      {% for poster in item.posters %}{% if poster.title and poster.title != "" %}
+                      <li>
+                        <div class="program-talk-title">{% if poster.url %}<a href="{{ poster.url }}" target="_blank" rel="noopener">{{ poster.title }}</a>{% else %}{{ poster.title }}{% endif %}</div>
+                        {% if poster.authors %}<div class="program-authors">{{ poster.authors | join: ", " }}</div>{% endif %}
+                      </li>
+                      {% endif %}{% endfor %}
+                    </ul>
+                  </details>
+                  {% else %}
+                  <div class="program-tba">Posters to be announced</div>
+                  {% endif %}
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

@@ -7,8 +7,50 @@
       </div>
     </div>
 
+    {% assign has_talks = false %}
+    {% for speaker in page.speakers %}{% if speaker.talk %}{% assign has_talks = true %}{% endif %}{% endfor %}
+
     <div class="row justify-content-center">
       <div class="col-md-8 custom-lg-6">
+        {% if has_talks %}
+        {% comment %} Keynote layout: photo, speaker, talk title and abstract. {% endcomment %}
+        {% for speaker in page.speakers %}
+        {% assign slot = nil %}
+        {% if page.schedule %}{% assign slot = page.schedule | where: "speaker", speaker.name | first %}{% endif %}
+        <article class="keynote" id="keynote-{{ speaker.name | slugify }}">
+          <div class="keynote-photo">
+            {% if speaker.website %}<a href="{{ speaker.website }}" target="_blank" rel="noopener">{% endif %}
+              <img
+                src="{{ '/assets/images/speakers/' | append: speaker.image | relative_url }}"
+                alt="{{ speaker.name }}"
+                class="img-fluid speaker-img"
+              />
+            {% if speaker.website %}</a>{% endif %}
+          </div>
+
+          <div class="keynote-head">
+            <h4 class="keynote-name">
+              {% if speaker.website %}<a href="{{ speaker.website }}" target="_blank" rel="noopener">{{ speaker.name }}</a>{% else %}{{ speaker.name }}{% endif %}
+            </h4>
+            <p class="keynote-affiliation">{{ speaker.affiliation }}</p>
+          </div>
+
+          {% if speaker.talk %}
+          <div class="keynote-talk">
+            <p class="keynote-kicker">
+              Keynote{% if slot %}<span class="program-sep" aria-hidden="true">&middot;</span><a href="#schedule">{{ slot.start }}&ndash;{{ slot.end }}</a>{% endif %}
+              {% if slot.remote %}<span class="program-badge" title="Presented online"><i class="fas fa-video" aria-hidden="true"></i> Remote</span>{% endif %}
+            </p>
+            <h5 class="keynote-title">{{ speaker.talk.title | default: "Title to be announced" }}</h5>
+            {% if speaker.talk.abstract %}
+            <div class="keynote-abstract">{{ speaker.talk.abstract | markdownify }}</div>
+            {% endif %}
+          </div>
+          {% endif %}
+        </article>
+        {% endfor %}
+
+        {% else %}
         <div class="row">
           {% for speaker in page.speakers %}
           <div class="col-md-4 text-center">
@@ -33,6 +75,7 @@
           </div>
           {% endfor %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
