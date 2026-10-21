@@ -37,6 +37,6 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
   />
 
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
+  <!-- Custom styles (?v= changes on every build, so browsers never keep an old copy) -->
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
 </head>

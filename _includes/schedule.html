@@ -11,7 +11,7 @@
 
         <div class="program-head">
           {% if page.schedule_note %}<div class="program-intro">{{ page.schedule_note | markdownify }}</div>{% endif %}
-          <button type="button" class="program-toggle" aria-expanded="false" hidden>Expand all abstracts</button>
+          <button type="button" class="program-toggle" aria-expanded="false" hidden><span>Expand all abstracts</span></button>
         </div>
 
         <div class="program-wrap">
@@ -41,9 +41,16 @@
             <tbody class="program-group program-{{ item_type }}">
               <tr class="program-group-head">
                 <td class="program-time">{% unless item.talks %}{{ item_start }}{% endunless %}</td>
-                <th scope="rowgroup">
-                  <span class="program-group-name">{{ item.title }}</span>
-                  <span class="program-group-meta">{{ item.start }}&ndash;{{ item.end }}{% if item.posters and shown > 0 %}<span class="program-sep" aria-hidden="true">&middot;</span>{{ shown }} posters{% endif %}{% if item.chair %}<span class="program-sep" aria-hidden="true">&middot;</span>Chair: {{ item.chair }}{% endif %}</span>
+                <th scope="rowgroup" class="program-event">
+                  {% if item_type == "poster" %}{% assign group_icon = item.icon | default: "th-large" %}{% else %}{% assign group_icon = item.icon | default: "microphone-alt" %}{% endif %}
+                  <div class="program-group-bar">
+                    <span class="program-group-name"><i class="fas fa-{{ group_icon }}" aria-hidden="true"></i>{{ item.title }}</span>
+                    <span class="program-group-meta">
+                      <span class="program-pill">{{ item.start }}&ndash;{{ item.end }}</span>
+                      {% if item.posters and shown > 0 %}<span class="program-pill">{{ shown }} posters</span>{% endif %}
+                      {% if item.chair %}<span class="program-pill">Chair: {{ item.chair }}</span>{% endif %}
+                    </span>
+                  </div>
                 </th>
               </tr>
 
@@ -105,7 +112,7 @@
             {% if item.speaker %}{% assign spk = page.speakers | where: "name", item.speaker | first %}{% endif %}
             {% assign k_title = item.title | default: spk.talk.title | default: "Title to be announced" %}
             {% assign k_abstract = item.abstract | default: spk.talk.abstract %}
-            {% capture k_people %}{% if spk %}{{ spk.name }}{% if spk.affiliation %}<span class="program-sep" aria-hidden="true">&middot;</span>{{ spk.affiliation }}{% endif %}{% else %}{{ item.speaker }}{% endif %}{% endcapture %}
+            {% capture k_people %}{% if spk %}{% if spk.image %}<img class="program-avatar" src="{{ '/assets/images/speakers/' | append: spk.image | relative_url }}" alt="" loading="lazy" />{% endif %}<span class="program-speaker">{{ spk.name }}</span>{% if spk.affiliation %}<span class="program-sep" aria-hidden="true">&middot;</span>{{ spk.affiliation }}{% endif %}{% else %}{{ item.speaker }}{% endif %}{% endcapture %}
             <tbody class="program-group program-keynote">
               <tr class="program-row">
                 <td class="program-time">{{ item_start }}</td>
@@ -121,7 +128,7 @@
               <tr class="program-row">
                 <td class="program-time">{{ item_start }}</td>
                 <td class="program-event">
-                  <span class="program-plain-title">{% if item.icon %}<i class="fas fa-{{ item.icon }} program-icon" aria-hidden="true"></i>{% endif %}{{ item.title }}</span>
+                  <span class="program-plain-title">{% if item.icon %}<span class="program-icon" aria-hidden="true"><i class="fas fa-{{ item.icon }}"></i></span>{% endif %}{{ item.title }}</span>
                   {% if item.speaker %}<span class="program-paper-authors">{{ item.speaker }}</span>{% endif %}
                   {% if item.note %}<div class="program-note">{{ item.note | markdownify }}</div>{% endif %}
                 </td>
@@ -145,7 +152,7 @@
       var each = function (fn) { Array.prototype.forEach.call(items, fn); };
       var sync = function () {
         var allOpen = Array.prototype.every.call(items, function (d) { return d.open; });
-        button.textContent = allOpen ? "Collapse all abstracts" : "Expand all abstracts";
+        button.querySelector("span").textContent = allOpen ? "Collapse all abstracts" : "Expand all abstracts";
         button.setAttribute("aria-expanded", allOpen ? "true" : "false");
       };
       button.hidden = false;

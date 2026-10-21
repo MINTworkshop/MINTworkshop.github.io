@@ -1,56 +1,61 @@
-// Program: schedule table (#schedule) and keynote entries (#speakers).
+// Program: schedule (#schedule) and keynote entries (#speakers).
 // Plain Sass syntax only, so it compiles with the Sass used by GitHub Pages.
 // Font sizes are in px because the site shrinks the root (rem) on phones.
 
-$program-rule: #e8e8e6;
-$program-rule-soft: #f0f0ee;
-$program-break-bg: #f7f7f5;
-$program-keynote-bg: mix($primary-color, #fff, 4%);
+$program-ink: #262a33;
+$program-muted: #6b7183;
+$program-line: #ebe6df;
+$program-hair: #f1ede8;
+$program-rail: #e6dfd5;
+$program-band: #fbf6f0;
+$program-break-bg: #f8f7f4;
+$program-keynote-bg: mix($primary-color, #fff, 6%);
 $program-accent: darken($primary-color, 6%);
-$program-chevron: #b8b8b8;
+$program-fa: "Font Awesome 5 Free";
 
 // Shared bits ---------------------------------------------------------------
 
 .program-badge {
   display: inline-block;
-  margin-left: 2px;
-  padding: 0 7px;
+  margin-left: 4px;
+  padding: 0 8px;
   border-radius: 999px;
   background: rgba($primary-color, 0.1);
   color: darken($primary-color, 8%);
   font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  line-height: 1.75;
+  letter-spacing: 0.06em;
+  line-height: 19px;
   text-transform: uppercase;
   vertical-align: 2px;
   white-space: nowrap;
 
   i {
-    margin-right: 2px;
+    margin-right: 3px;
     font-size: 0.9em;
   }
 }
 
 .program-sep {
-  margin: 0 0.45em;
-  color: lighten($text-light, 25%);
+  margin: 0 0.5em;
+  color: #c3c0ba;
 }
 
 // Schedule ------------------------------------------------------------------
 
 #schedule {
+  // Date, time zone and talk lengths, with the expand-all button
   .program-head {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: $spacing-unit * 2;
+    margin-bottom: 20px;
   }
 
   .program-intro {
-    margin-right: $spacing-unit * 3;
-    color: $text-light;
+    margin: 4px 24px 4px 0;
+    color: $text-color;
     font-size: 15px;
     line-height: 1.6;
 
@@ -58,31 +63,71 @@ $program-chevron: #b8b8b8;
       margin: 0;
     }
 
+    p::before {
+      display: inline-block;
+      width: 1.5em;
+      color: $primary-color;
+      font-family: $program-fa;
+      font-weight: 900;
+    }
+
+    p:first-child::before {
+      content: "\f073"; // calendar
+    }
+
     p + p {
-      margin-top: 2px;
+      margin-top: 4px;
+      color: $program-muted;
       font-size: 14px;
+    }
+
+    p + p::before {
+      content: "\f2f2"; // stopwatch
     }
   }
 
   .program-toggle {
-    margin-top: $spacing-unit;
-    padding: 2px 0;
-    border: 0;
-    background: none;
+    margin: 6px 0;
+    padding: 7px 16px;
+    border: 1px solid rgba($primary-color, 0.35);
+    border-radius: 999px;
+    background: #fff;
     color: $primary-color;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
+    line-height: 18px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
-    &:hover {
-      text-decoration: underline;
+    &::before {
+      content: "\f103"; // angle-double-down
+      margin-right: 8px;
+      font-family: $program-fa;
+      font-weight: 900;
+    }
+
+    &[aria-expanded="true"]::before {
+      content: "\f102"; // angle-double-up
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: $primary-color;
+      background: $primary-color;
+      color: #fff;
+    }
+
+    &[hidden] {
+      display: none;
     }
   }
 
+  // The card
   .program-wrap {
-    border: 1px solid $program-rule;
-    border-radius: $border-radius;
+    border: 1px solid $program-line;
+    border-radius: 14px;
     background: #fff;
+    box-shadow: 0 1px 2px rgba(34, 28, 20, 0.04), 0 14px 30px -20px rgba(34, 28, 20, 0.3);
     overflow: hidden;
   }
 
@@ -94,96 +139,130 @@ $program-chevron: #b8b8b8;
 
     th,
     td {
-      padding: 14px 20px 14px 0;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
       text-align: left;
       vertical-align: top;
       font-weight: inherit;
     }
-
-    // Time column
-    th:first-child,
-    td:first-child {
-      padding-left: 20px;
-    }
   }
 
-  .program-group + .program-group {
-    border-top: 1px solid $program-rule;
-  }
-
-  .program-row + .program-row {
-    border-top: 1px solid $program-rule-soft;
-  }
-
-  .program-time {
+  // Time column
+  .program-table .program-time {
     width: 1%;
-    padding-right: 22px;
-    white-space: nowrap;
-    color: $text-dark;
+    padding-left: 22px;
+    padding-right: 20px;
+    color: $program-ink;
     font-size: 15px;
     font-variant-numeric: tabular-nums;
     font-weight: 600;
-    line-height: 23px;
+    line-height: 24px;
+    text-align: right;
+    white-space: nowrap;
   }
 
-  // Session heading rows (oral and poster sessions)
+  // Event column with the timeline rail along its left edge
+  .program-table .program-event {
+    position: relative;
+    padding-left: 26px;
+    padding-right: 22px;
+    background-image: linear-gradient($program-rail, $program-rail);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 2px 100%;
+  }
+
+  // Timeline dots: hollow for talks, filled for keynotes, grey for the rest
+  .program-row > .program-event::before {
+    content: "";
+    position: absolute;
+    top: 22px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid $primary-color;
+    border-radius: 50%;
+    background: #fff;
+  }
+
+  .program-row + .program-row > .program-event {
+    border-top: 1px solid $program-hair;
+  }
+
+  // Session heading: a ruled heading row, so keynotes stay the only tinted rows
   .program-group-head {
-    th,
-    td {
-      padding-top: 18px;
-      padding-bottom: 2px;
+    td,
+    th {
+      padding-top: 16px;
+      padding-bottom: 6px;
+      border-top: 1px solid $program-line;
+    }
+
+    .program-time {
+      color: $program-accent;
     }
   }
 
+  .program-group-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .program-group-name {
+    margin-right: 12px;
     color: $program-accent;
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    line-height: 23px;
+    letter-spacing: 0.12em;
+    line-height: 24px;
     text-transform: uppercase;
+
+    i {
+      margin-right: 9px;
+      font-size: 13px;
+    }
   }
 
-  .program-group-meta {
-    margin-left: 10px;
-    color: $text-light;
-    font-size: 13px;
+  .program-pill {
+    display: inline-block;
+    margin: 2px 0 2px 6px;
+    padding: 0 10px;
+    border: 1px solid #eadccb;
+    border-radius: 999px;
+    background: #fff;
+    color: #7d6a58;
+    font-size: 12.5px;
     font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
   }
 
-  // Titles, authors, abstracts
-  .program-kicker {
-    display: block;
-    margin-bottom: 1px;
-    color: $program-accent;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    line-height: 23px;
-    text-transform: uppercase;
-  }
-
+  // Titles and authors
   .program-paper-title,
   .program-plain-title {
     display: block;
-    color: $text-dark;
+    color: $program-ink;
     font-size: 16px;
     font-weight: 500;
-    line-height: 23px;
+    line-height: 24px;
   }
 
   .program-paper-authors {
     display: block;
     margin-top: 3px;
-    color: $text-light;
+    color: $program-muted;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   .program-paper > summary {
     display: block;
     position: relative;
-    padding-right: 30px;
+    padding-right: 46px;
     cursor: pointer;
     list-style: none;
 
@@ -191,19 +270,36 @@ $program-chevron: #b8b8b8;
       display: none;
     }
 
-    // Chevron on the right, drawn with borders.
+    // Round button with a chevron, on the first line of the title
+    &::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      right: 0;
+      width: 26px;
+      height: 26px;
+      border: 1px solid $program-line;
+      border-radius: 50%;
+      background: #fff;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
     &::after {
       content: "";
       position: absolute;
-      top: 6px;
-      right: 4px;
+      top: 7px;
+      right: 9px;
       width: 8px;
       height: 8px;
       border-right: 2px solid currentColor;
       border-bottom: 2px solid currentColor;
-      color: $program-chevron;
+      color: #a1978b;
       transform: rotate(45deg);
-      transition: transform 0.2s ease, color 0.2s ease;
+      transition: transform 0.2s ease, color 0.2s ease, top 0.2s ease;
+    }
+
+    &:hover::before {
+      border-color: rgba($primary-color, 0.45);
     }
 
     &:hover::after,
@@ -214,24 +310,33 @@ $program-chevron: #b8b8b8;
     &:focus-visible {
       outline: 2px solid rgba($primary-color, 0.35);
       outline-offset: 4px;
-      border-radius: 4px;
+      border-radius: 6px;
     }
   }
 
-  .program-paper[open] > summary::after {
-    top: 10px;
-    color: $primary-color;
-    transform: rotate(-135deg);
+  .program-paper[open] > summary {
+    &::before {
+      border-color: rgba($primary-color, 0.4);
+      background: rgba($primary-color, 0.08);
+    }
+
+    &::after {
+      top: 10px;
+      color: $primary-color;
+      transform: rotate(-135deg);
+    }
   }
 
   .program-abstract {
-    max-width: 44em;
-    margin: 12px 0 4px;
-    padding: 2px 0 2px 14px;
-    border-left: 2px solid rgba($primary-color, 0.3);
-    color: $text-color;
+    max-width: 46em;
+    margin: 12px 0 2px;
+    padding: 14px 18px;
+    border: 1px solid #f0eae2;
+    border-radius: 10px;
+    background: #fbf9f6;
+    color: #3d4250;
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.7;
     overflow-wrap: break-word;
     overflow-wrap: anywhere;
 
@@ -244,50 +349,137 @@ $program-chevron: #b8b8b8;
     }
   }
 
-  .program-icon {
-    width: 1.25em;
-    margin-right: 6px;
-    color: $text-light;
-    text-align: center;
-  }
-
   .program-note {
     margin-top: 4px;
     font-size: 14px;
   }
 
   .program-tba {
-    color: $text-light;
+    color: $program-muted;
     font-size: 14px;
     font-style: italic;
+    line-height: 24px;
   }
 
-  // Row types
+  .program-tba::before {
+    display: none;
+  }
+
+  // Keynotes
   .program-keynote td {
-    background: $program-keynote-bg;
+    background-color: $program-keynote-bg;
   }
 
   .program-keynote td:first-child {
-    box-shadow: inset 3px 0 0 $primary-color;
+    box-shadow: inset 4px 0 0 $primary-color;
   }
 
+  .program-keynote .program-event::before {
+    background: $primary-color;
+    box-shadow: 0 0 0 4px rgba($primary-color, 0.18);
+  }
+
+  .program-kicker {
+    display: inline-block;
+    margin: 2px 0 8px;
+    padding: 0 9px;
+    border-radius: 999px;
+    background: $primary-color;
+    color: #fff;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 20px;
+    text-transform: uppercase;
+    vertical-align: top;
+  }
+
+  .program-keynote .program-paper-title {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .program-keynote .program-paper-authors {
+    margin-top: 6px;
+  }
+
+  .program-avatar {
+    width: 26px;
+    height: 26px;
+    margin: -2px 9px 0 0;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
+    vertical-align: middle;
+  }
+
+  .program-speaker {
+    color: $program-ink;
+    font-weight: 500;
+  }
+
+  // Breaks
   .program-break td {
     padding-top: 10px;
     padding-bottom: 10px;
-    background: $program-break-bg;
+    background-color: $program-break-bg;
   }
 
   .program-break .program-time,
   .program-break .program-plain-title {
-    color: $text-light;
+    color: $program-muted;
     font-weight: 500;
   }
 
-  .program-poster .program-row .program-time {
-    padding-right: 0;
+  .program-break .program-event::before {
+    top: 18px;
+    left: -3px;
+    width: 8px;
+    height: 8px;
+    border: 0;
+    background: #cfc7bc;
   }
 
-  // Phones: keep two columns, just tighter.
+  .program-icon {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    margin: -1px 10px 0 0;
+    border: 1px solid $program-line;
+    border-radius: 50%;
+    background: #fff;
+    color: $primary-color;
+    font-size: 11px;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: top;
+  }
+
+  // Opening and closing
+  .program-opening .program-plain-title,
+  .program-closing .program-plain-title {
+    font-weight: 600;
+  }
+
+  .program-opening .program-event::before,
+  .program-closing .program-event::before {
+    border-color: #8b90a0;
+    background: #8b90a0;
+  }
+
+  // Posters: small square markers instead of time dots
+  .program-poster .program-row > .program-event::before {
+    top: 24px;
+    left: -2px;
+    width: 6px;
+    height: 6px;
+    border: 0;
+    border-radius: 2px;
+    background: #d4c3ae;
+  }
+
+  // Phones: keep the two columns, just tighter
   @media (max-width: 575.98px) {
     .program-head {
       display: block;
@@ -296,31 +488,40 @@ $program-chevron: #b8b8b8;
     .program-table {
       th,
       td {
-        padding: 12px 14px 12px 0;
+        padding-top: 13px;
+        padding-bottom: 13px;
       }
 
-      th:first-child,
-      td:first-child {
+      .program-time {
         padding-left: 12px;
+        padding-right: 12px;
+        font-size: 14px;
+      }
+
+      .program-event {
+        padding-left: 18px;
+        padding-right: 14px;
       }
     }
 
-    .program-time {
-      padding-right: 12px;
-      font-size: 14px;
+    .program-row > .program-event::before {
+      top: 20px;
     }
 
     .program-group-head {
-      th,
-      td {
-        padding-top: 16px;
-        padding-bottom: 0;
+      td,
+      th {
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
     }
 
-    .program-group-meta {
+    .program-group-name {
       display: block;
-      margin-left: 0;
+    }
+
+    .program-pill {
+      margin: 2px 6px 2px 0;
     }
 
     .program-paper-title,
@@ -328,31 +529,51 @@ $program-chevron: #b8b8b8;
       font-size: 15.5px;
     }
 
+    .program-keynote .program-paper-title {
+      font-size: 16px;
+    }
+
     .program-paper-authors {
       font-size: 13.5px;
     }
 
     .program-paper > summary {
-      padding-right: 22px;
+      padding-right: 34px;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+        top: 0;
+      }
 
       &::after {
-        right: 2px;
+        right: 8px;
       }
     }
 
     .program-abstract {
-      padding-left: 10px;
+      padding: 12px 14px;
       font-size: 14.5px;
+    }
+
+    .program-break .program-event::before {
+      top: 18px;
+    }
+
+    .program-poster .program-row > .program-event::before {
+      top: 22px;
     }
   }
 
   @media print {
-    .program-toggle {
+    .program-toggle,
+    .program-paper > summary::before,
+    .program-paper > summary::after {
       display: none;
     }
 
-    .program-paper > summary::after {
-      display: none;
+    .program-wrap {
+      box-shadow: none;
     }
   }
 }
@@ -367,7 +588,7 @@ $program-chevron: #b8b8b8;
     grid-template-areas: "photo head" "photo talk";
     column-gap: $spacing-unit * 4;
     padding: $spacing-unit * 4 0;
-    border-top: 1px solid $program-rule;
+    border-top: 1px solid $program-line;
 
     &:first-of-type {
       padding-top: 0;
