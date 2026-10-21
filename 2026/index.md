@@ -105,8 +105,7 @@ schedule:
     talks:
       - paper: 16
         remote: true
-        paper: 19
-        remote: true
+      - paper: 19
       - paper: 29
       - paper: 35
       - paper: 22
