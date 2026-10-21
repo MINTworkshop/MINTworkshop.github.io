@@ -1,0 +1,22 @@
+{% comment %}
+  One entry in the program (talk, poster or keynote): title, authors, and an
+  abstract that opens when the title is clicked.
+  Parameters: title, authors (list or text), abstract, remote, url.
+{% endcomment %}
+{% if include.abstract and include.abstract != "" %}
+<details class="program-paper">
+  <summary>
+    <span class="program-paper-title">{{ include.title }}{% if include.remote %} <span class="program-badge" title="Presented online"><i class="fas fa-video" aria-hidden="true"></i> Remote</span>{% endif %}</span>
+    {% if include.authors and include.authors != "" %}<span class="program-paper-authors">{{ include.authors | join: ", " }}</span>{% endif %}
+  </summary>
+  <div class="program-abstract">
+    {{ include.abstract | markdownify }}
+    {% if include.url %}<p><a href="{{ include.url }}" target="_blank" rel="noopener">Read the paper</a></p>{% endif %}
+  </div>
+</details>
+{% else %}
+<div class="program-paper">
+  <span class="program-paper-title">{% if include.url %}<a href="{{ include.url }}" target="_blank" rel="noopener">{{ include.title }}</a>{% else %}{{ include.title }}{% endif %}{% if include.remote %} <span class="program-badge" title="Presented online"><i class="fas fa-video" aria-hidden="true"></i> Remote</span>{% endif %}</span>
+  {% if include.authors and include.authors != "" %}<span class="program-paper-authors">{{ include.authors | join: ", " }}</span>{% endif %}
+</div>
+{% endif %}

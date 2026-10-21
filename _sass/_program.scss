@@ -1,10 +1,13 @@
 // Program: schedule table (#schedule) and keynote entries (#speakers).
 // Plain Sass syntax only, so it compiles with the Sass used by GitHub Pages.
+// Font sizes are in px because the site shrinks the root (rem) on phones.
 
-$program-rule: #ececec;
-$program-break-bg: #f6f6f4;
+$program-rule: #e8e8e6;
+$program-rule-soft: #f0f0ee;
+$program-break-bg: #f7f7f5;
 $program-keynote-bg: mix($primary-color, #fff, 4%);
 $program-accent: darken($primary-color, 6%);
+$program-chevron: #b8b8b8;
 
 // Shared bits ---------------------------------------------------------------
 
@@ -15,12 +18,12 @@ $program-accent: darken($primary-color, 6%);
   border-radius: 999px;
   background: rgba($primary-color, 0.1);
   color: darken($primary-color, 8%);
-  font-size: 0.7rem;
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  line-height: 1.6;
+  line-height: 1.75;
   text-transform: uppercase;
-  vertical-align: 0.15em;
+  vertical-align: 2px;
   white-space: nowrap;
 
   i {
@@ -30,165 +33,233 @@ $program-accent: darken($primary-color, 6%);
 }
 
 .program-sep {
-  margin: 0 0.4em;
-  color: lighten($text-light, 20%);
+  margin: 0 0.45em;
+  color: lighten($text-light, 25%);
 }
 
-.program-abstract,
-.program-posters {
-  margin-top: 6px;
+// Schedule ------------------------------------------------------------------
 
-  > summary {
-    display: inline-block;
-    cursor: pointer;
+#schedule {
+  .program-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: $spacing-unit * 2;
+  }
+
+  .program-intro {
+    margin-right: $spacing-unit * 3;
+    color: $text-light;
+    font-size: 15px;
+    line-height: 1.6;
+
+    p {
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 2px;
+      font-size: 14px;
+    }
+  }
+
+  .program-toggle {
+    margin-top: $spacing-unit;
+    padding: 2px 0;
+    border: 0;
+    background: none;
     color: $primary-color;
-    font-size: 0.85rem;
+    cursor: pointer;
+    font-size: 14px;
     font-weight: 600;
-    list-style: none;
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-
-    // Chevron drawn with borders, so it does not depend on an icon font.
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 0.42em;
-      height: 0.42em;
-      margin: 0 0.55em 0.12em 0.1em;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: rotate(-45deg);
-      transition: transform 0.2s ease;
-      vertical-align: middle;
-    }
 
     &:hover {
       text-decoration: underline;
     }
   }
 
-  &[open] > summary::before {
-    transform: rotate(45deg);
-  }
-}
-
-.program-abstract-body {
-  margin-top: 6px;
-  padding-left: 12px;
-  border-left: 2px solid rgba($primary-color, 0.25);
-  color: $text-color;
-  font-size: 0.9rem;
-  line-height: 1.65;
-
-  p {
-    margin-bottom: $spacing-unit;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-// Schedule ------------------------------------------------------------------
-
-#schedule {
-  .program-intro {
-    color: $text-light;
-    margin-bottom: $spacing-unit * 3;
-  }
-
   .program-wrap {
-    background: #fff;
     border: 1px solid $program-rule;
     border-radius: $border-radius;
+    background: #fff;
     overflow: hidden;
   }
 
   .program-table {
-    margin-bottom: 0;
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
     color: $text-color;
 
     th,
     td {
-      padding: $spacing-unit * 2 $spacing-unit * 2.5;
-      border-top: 1px solid $program-rule;
+      padding: 14px 20px 14px 0;
+      text-align: left;
       vertical-align: top;
+      font-weight: inherit;
     }
 
-    thead th {
-      padding-top: $spacing-unit * 1.5;
-      padding-bottom: $spacing-unit * 1.5;
-      border-top: 0;
-      border-bottom: 1px solid $program-rule;
-      background: #fcfcfc;
-      color: $text-light;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    // Time column
+    th:first-child,
+    td:first-child {
+      padding-left: 20px;
     }
+  }
+
+  .program-group + .program-group {
+    border-top: 1px solid $program-rule;
+  }
+
+  .program-row + .program-row {
+    border-top: 1px solid $program-rule-soft;
   }
 
   .program-time {
     width: 1%;
+    padding-right: 22px;
     white-space: nowrap;
     color: $text-dark;
-    font-weight: 600;
+    font-size: 15px;
     font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    line-height: 23px;
   }
 
-  .program-kicker {
-    margin-bottom: 2px;
+  // Session heading rows (oral and poster sessions)
+  .program-group-head {
+    th,
+    td {
+      padding-top: 18px;
+      padding-bottom: 2px;
+    }
+  }
+
+  .program-group-name {
     color: $program-accent;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    line-height: 1.4;
+    letter-spacing: 0.1em;
+    line-height: 23px;
     text-transform: uppercase;
   }
 
-  .program-title {
+  .program-group-meta {
+    margin-left: 10px;
+    color: $text-light;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // Titles, authors, abstracts
+  .program-kicker {
+    display: block;
+    margin-bottom: 1px;
+    color: $program-accent;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 23px;
+    text-transform: uppercase;
+  }
+
+  .program-paper-title,
+  .program-plain-title {
+    display: block;
     color: $text-dark;
-    font-weight: 600;
-    line-height: 1.45;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+  }
+
+  .program-paper-authors {
+    display: block;
+    margin-top: 3px;
+    color: $text-light;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .program-paper > summary {
+    display: block;
+    position: relative;
+    padding-right: 30px;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // Chevron on the right, drawn with borders.
+    &::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      color: $program-chevron;
+      transform: rotate(45deg);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    &:hover::after,
+    &:hover .program-paper-title {
+      color: $primary-color;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba($primary-color, 0.35);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+
+  .program-paper[open] > summary::after {
+    top: 10px;
+    color: $primary-color;
+    transform: rotate(-135deg);
+  }
+
+  .program-abstract {
+    max-width: 44em;
+    margin: 12px 0 4px;
+    padding: 2px 0 2px 14px;
+    border-left: 2px solid rgba($primary-color, 0.3);
+    color: $text-color;
+    font-size: 15px;
+    line-height: 1.65;
+    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
+
+    p {
+      margin-bottom: $spacing-unit;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .program-icon {
-    width: 1.2em;
-    margin-right: 4px;
+    width: 1.25em;
+    margin-right: 6px;
     color: $text-light;
     text-align: center;
   }
 
-  .program-people {
-    margin-top: 4px;
-    line-height: 1.5;
-
-    a {
-      font-weight: 500;
-    }
-  }
-
-  .program-affiliation {
-    color: $text-light;
-  }
-
-  .program-meta,
-  .program-tba {
-    margin-top: 4px;
-    color: $text-light;
-    font-size: 0.875rem;
-  }
-
-  .program-tba {
-    font-style: italic;
-  }
-
   .program-note {
     margin-top: 4px;
-    font-size: 0.9rem;
+    font-size: 14px;
+  }
+
+  .program-tba {
+    color: $text-light;
+    font-size: 14px;
+    font-style: italic;
   }
 
   // Row types
@@ -201,110 +272,87 @@ $program-accent: darken($primary-color, 6%);
   }
 
   .program-break td {
-    padding-top: $spacing-unit * 1.25;
-    padding-bottom: $spacing-unit * 1.25;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background: $program-break-bg;
   }
 
   .program-break .program-time,
-  .program-break .program-title {
+  .program-break .program-plain-title {
     color: $text-light;
     font-weight: 500;
   }
 
-  .program-opening .program-title,
-  .program-closing .program-title {
-    font-weight: 500;
+  .program-poster .program-row .program-time {
+    padding-right: 0;
   }
 
-  // Talks inside an oral session
-  .program-talks,
-  .program-poster-list {
-    margin: $spacing-unit 0 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      margin: 0;
-      padding: $spacing-unit * 1.25 0;
-      border-top: 1px dashed $program-rule;
-    }
-
-    li:last-child {
-      padding-bottom: 0;
-    }
-  }
-
-  .program-talk {
-    display: flex;
-  }
-
-  .program-talk-time {
-    flex: 0 0 3.6em;
-    color: $text-light;
-    font-size: 0.875rem;
-    font-variant-numeric: tabular-nums;
-    line-height: 1.65;
-  }
-
-  .program-talk-body {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
-  .program-talk-title {
-    color: $text-dark;
-    font-weight: 500;
-    line-height: 1.45;
-  }
-
-  .program-authors {
-    margin-top: 2px;
-    color: $text-light;
-    font-size: 0.875rem;
-    font-style: italic;
-  }
-
-  // Phones: stack the time above the event instead of two columns.
+  // Phones: keep two columns, just tighter.
   @media (max-width: 575.98px) {
+    .program-head {
+      display: block;
+    }
+
     .program-table {
-      thead {
-        display: none;
-      }
-
-      tbody,
-      tr,
+      th,
       td {
-        display: block;
-        width: 100%;
+        padding: 12px 14px 12px 0;
       }
 
-      tr {
-        border-top: 1px solid $program-rule;
+      th:first-child,
+      td:first-child {
+        padding-left: 12px;
       }
+    }
 
-      tr:first-child {
-        border-top: 0;
-      }
+    .program-time {
+      padding-right: 12px;
+      font-size: 14px;
+    }
 
+    .program-group-head {
+      th,
       td {
-        padding: $spacing-unit * 1.5 $spacing-unit * 2;
-        border-top: 0;
-      }
-
-      td.program-time {
+        padding-top: 16px;
         padding-bottom: 0;
-        font-size: 0.875rem;
       }
     }
 
-    .program-break td.program-time {
-      padding-bottom: 0;
+    .program-group-meta {
+      display: block;
+      margin-left: 0;
     }
 
-    .program-keynote td,
-    .program-keynote td:first-child {
-      box-shadow: inset 3px 0 0 $primary-color;
+    .program-paper-title,
+    .program-plain-title {
+      font-size: 15.5px;
+    }
+
+    .program-paper-authors {
+      font-size: 13.5px;
+    }
+
+    .program-paper > summary {
+      padding-right: 22px;
+
+      &::after {
+        right: 2px;
+      }
+    }
+
+    .program-abstract {
+      padding-left: 10px;
+      font-size: 14.5px;
+    }
+  }
+
+  @media print {
+    .program-toggle {
+      display: none;
+    }
+
+    .program-paper > summary::after {
+      display: none;
     }
   }
 }
