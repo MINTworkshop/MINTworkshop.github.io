@@ -257,6 +257,16 @@
     corpus research, and recommending a systematized method of annotation which captures
     the critical but complex variations in NMM production in ASL.
 
+- id: 19
+  decision: Oral
+  title: ""They Really Clicked": How do Multimodal LLMs Judge Rapport Between People?"
+  authors:
+    - Oussama Silem
+    - Éric de La Clergerie
+    - Justine Cassell
+  abstract: |
+    We investigate the alignment between humans and multimodal large language models (MLLMs) when judging interpersonal rapport --a feeling of ease and harmony in conversation-- in naturalistic dyadic interactions. Based on a peer-tutoring corpus with crowd-sourced thin-slice rapport annotations, we compare human and model judgments across a range of open- and closed-source models under two complementary framings: Likert-scales and pairwise comparison of segments. Beyond measuring agreement, we analyze the models' reasoning traces to examine what they attend to. We find a moderate model–human agreement on absolute ratings, comparable to that among human annotators and correlated with the degree of inter-annotator agreement. However, this surface-level agreement hides systematic limitations, as models show a leniency bias and a gender disparity in agreement, rely on a narrow set of mostly nonverbal cues, and over-interpret isolated signals while overlooking the reciprocity between interlocutors that rapport theory emphasizes. Under pairwise comparison, agreement rises for both people and models, with annotators showing higher agreement than in absolute rating and models reaching near-perfect alignment with human pairwise judgments on high-contrast pairs. Our findings support pairwise comparison as a more reliable approach for the computational modeling of rapport, but also lead to questions about perfect inter-rater alignment as a goal, and about current MLLMs as judges. Traces of model reasoning further illuminate rapport theory, as well as the biases of current MLLMs.
+
 - id: 20
   decision: Oral
   title: "Do Motion Tokenizers for Co-Speech Gesture Generation Encode Gesture Semantics?"
@@ -354,6 +364,15 @@
     only humans gain from visible behavior on top of speech. We release the stimuli,
     human ratings, and model predictions.
 
+- id: 30
+  decision: Poster
+  title: "The Leaky Pipeline: Where Automated Analyses of Infant Egocentric Videos Underestimate Referential Grounding"
+  authors:
+    - Veronica Mangiaterra
+    - Sho Tsuji
+    - Emmanuel Dupoux
+  abstract: |
+    A popular hypothesis states that children's word learning benefits from semantic alignment between the linguistic input they hear and the surrounding visual context. However, different disciplines have arrived at strikingly different estimates of how often this occurs. While developmental studies based on manual annotation describe infant-directed speech as being predominantly grounded in the ``here-and-now'', recent analyses of naturalistic infant egocentric videos using vision-language models report only limited language-scene alignment. In this paper, we explore the hypothesis that these contrasting estimates arise because automated analyses are subject to a sequence of linguistic, perceptual, and methodological bottlenecks that progressively reduce the amount of recoverable grounded language. We refer to this sequence as the "leaky pipeline". We present a preliminary synthesis of these successive sources of information loss by combining published estimates with exploratory analyses of available datasets, and outline possible directions for recovering a larger proportion of grounded language from naturalistic egocentric recordings..
 - id: 31
   decision: Poster
   title: "MentaLED: A Multimodal Conversational Agent for Mental Health Support Using Linguistic and Paralinguistic Speech Cues"

@@ -105,9 +105,8 @@ schedule:
     talks:
       - paper: 16
         remote: true
-      - title: '"They Really Clicked": How do Multimodal LLMs Judge Rapport Between People?'
-        authors: # paper 19 is not in papers_2026.yml, so fill these in here
-        abstract:
+        paper: 19
+        remote: true
       - paper: 29
       - paper: 35
       - paper: 22
@@ -128,6 +127,7 @@ schedule:
       - paper: 5
       - paper: 9
       - paper: 15
+      - paper: 30
       - paper: 31
       - paper: 33
       - paper: 34
